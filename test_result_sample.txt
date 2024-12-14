@@ -1,0 +1,61 @@
+===================== Invoke 0 value ===================================
+=======================================================================
+++Begin '0'
+2024-12-14T05:49:36.305453+00:00
++++Value 'asset1' in org1:
+{"AppraisedValue":300,"Color":"blue","ID":"asset1","Owner":"Tomoko","Size":5}
++++Value 'asset1' in org2:
+{"AppraisedValue":300,"Color":"blue","ID":"asset1","Owner":"Tomoko","Size":5}
++++Info of blockchain in org1:
+2024-12-14 05:49:37.657 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+Blockchain info: {"height":15,"currentBlockHash":"VxpkSFISGYyHPBrssI1GaJ2/rXxphiQ+GoGTidSwQRA=","previousBlockHash":"Jh28tsjMDyReaR4anJnrvhYCiUl5JaR/thgeZbW8J8k="}
++++Info of blockchain in org2:
+2024-12-14 05:49:38.110 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+Blockchain info: {"height":15,"currentBlockHash":"VxpkSFISGYyHPBrssI1GaJ2/rXxphiQ+GoGTidSwQRA=","previousBlockHash":"Jh28tsjMDyReaR4anJnrvhYCiUl5JaR/thgeZbW8J8k="}
+++Finish '0'
+ELAPSED TIME in ms:
+1840
+2024-12-14T05:49:38.146189+00:00
+
+
+
+===================== Invoke 1 value ===================================
+=======================================================================
+++Begin '1'
+2024-12-14T05:49:38.146477+00:00
++++Value 'asset1' in org1:
+{"AppraisedValue":300,"Color":"blue","ID":"asset1","Owner":"Tomoko","Size":5}
++++Value 'asset1' in org2:
+{"AppraisedValue":300,"Color":"blue","ID":"asset1","Owner":"Tomoko","Size":5}
++++Info of blockchain in org1:
+2024-12-14 05:49:39.403 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+Blockchain info: {"height":15,"currentBlockHash":"VxpkSFISGYyHPBrssI1GaJ2/rXxphiQ+GoGTidSwQRA=","previousBlockHash":"Jh28tsjMDyReaR4anJnrvhYCiUl5JaR/thgeZbW8J8k="}
++++Info of blockchain in org2:
+2024-12-14 05:49:39.827 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+Blockchain info: {"height":15,"currentBlockHash":"VxpkSFISGYyHPBrssI1GaJ2/rXxphiQ+GoGTidSwQRA=","previousBlockHash":"Jh28tsjMDyReaR4anJnrvhYCiUl5JaR/thgeZbW8J8k="}
+++Finish '1'
+ELAPSED TIME in ms:
+1718
+2024-12-14T05:49:39.865337+00:00
+
+
+
+===================== Invoke 2 value ===================================
+=======================================================================
+++Begin '2'
+2024-12-14T05:49:39.865589+00:00
++++Value 'asset1' in org1:
+{"AppraisedValue":300,"Color":"blue","ID":"asset1","Owner":"Tomoko","Size":5}
++++Value 'asset1' in org2:
+{"AppraisedValue":300,"Color":"blue","ID":"asset1","Owner":"Tomoko","Size":5}
++++Info of blockchain in org1:
+2024-12-14 05:49:41.139 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+Blockchain info: {"height":15,"currentBlockHash":"VxpkSFISGYyHPBrssI1GaJ2/rXxphiQ+GoGTidSwQRA=","previousBlockHash":"Jh28tsjMDyReaR4anJnrvhYCiUl5JaR/thgeZbW8J8k="}
++++Info of blockchain in org2:
+2024-12-14 05:49:41.561 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+Blockchain info: {"height":15,"currentBlockHash":"VxpkSFISGYyHPBrssI1GaJ2/rXxphiQ+GoGTidSwQRA=","previousBlockHash":"Jh28tsjMDyReaR4anJnrvhYCiUl5JaR/thgeZbW8J8k="}
+++Finish '2'
+ELAPSED TIME in ms:
+1736
+2024-12-14T05:49:41.602147+00:00
+
