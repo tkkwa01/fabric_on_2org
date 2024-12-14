@@ -46,9 +46,9 @@ for i in range(num_iterations):
             f"docker exec cli peer chaincode query "
             f"-C {channel_name} "
             f"-n {chaincode_name} "
-            f"-c '{{\"Args\":[\"ReadAsset\",\"{query_key}\"]}}' "  # 'query' を 'ReadAsset' に変更
+            f"-c '{{\"Args\":[\"ReadAsset\",\"{query_key}\"]}}' "
             f"--peerAddresses {config['peer_address']} "
-            f"--tls --tlsRootCertFiles {config['tls_cert_path']}"  # '--cafile' を '--tlsRootCertFiles' に変更
+            f"--tls --tlsRootCertFiles {config['tls_cert_path']}"
         )
         query_result = run_command(query_cmd)
         print(f"+++Value '{query_key}' in {org}:")
@@ -56,7 +56,7 @@ for i in range(num_iterations):
     
     # ブロックチェーン情報の取得
     for org, config in organizations.items():
-        # チャネル情報取得コマンドの構築
+        # チャネル情報取得コマンド
         getinfo_cmd = (
             f"docker exec cli peer channel getinfo "
             f"-c {channel_name} "
