@@ -1,4 +1,5 @@
 import subprocess
+import re
 from datetime import datetime, timezone
 
 # 組織ごとの設定
@@ -65,15 +66,19 @@ def get_block_timestamp(org, config, block_number):
 
     # タイムスタンプの抽出
     timestamp_line = [line for line in result.split('\n') if 'timestamp' in line]
-    return timestamp_line[0] if timestamp_line else "Timestamp not found"
+    if timestamp_line:
+        # ISOフォーマットの日時として取得
+        timestamp = re.search(r'"timestamp":\s+"(.*?)"', timestamp_line[0])
+        return timestamp.group(1) if timestamp else "Timestamp not found"
+    return "Timestamp not found"
 
 # 主処理
 def main():
     block_number = 10  # サンプル取得するブロック番号
-    delay_ms = [0, 1000, 2000, 3000]  # ネットワーク遅延の値
+    delay_ms = [0, 1000, 2000, 3000, 90000]  # ネットワーク遅延の値
 
     for delay in delay_ms:
-        print(f"===== Testing with {delay}ms network delay =====")
+        print(f"\n===== Testing with {delay}ms network delay =====")
         set_network_delay(delay)
 
         # 各組織からタイムスタンプを取得
@@ -87,11 +92,16 @@ def main():
                 print(f"{org}: Failed to retrieve timestamp")
 
         # オフセットの計算
-        print("\nTimestamps comparison:")
-        for org1 in organizations:
-            for org2 in organizations:
-                if org1 != org2 and timestamps[org1] and timestamps[org2]:
-                    print(f"Offset between {org1} and {org2}: {timestamps[org1]} - {timestamps[org2]}")
+        print("\n=== Timestamp Offsets ===")
+        org_keys = list(organizations.keys())
+        for i in range(len(org_keys)):
+            for j in range(i + 1, len(org_keys)):
+                org1, org2 = org_keys[i], org_keys[j]
+                if timestamps[org1] and timestamps[org2]:
+                    t1 = datetime.fromisoformat(timestamps[org1].replace('Z', '+00:00'))
+                    t2 = datetime.fromisoformat(timestamps[org2].replace('Z', '+00:00'))
+                    offset = abs((t2 - t1).total_seconds() * 1000)  # ミリ秒単位で計算
+                    print(f"Offset between {org1} and {org2}: {offset:.2f} ms")
         clear_network_delay()
 
 if __name__ == "__main__":
