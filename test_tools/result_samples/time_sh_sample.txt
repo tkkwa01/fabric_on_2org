@@ -1,0 +1,25 @@
+Fetching block 0...
+2024-12-17 06:27:24.020 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2024-12-17 06:27:24.027 UTC 0002 INFO [cli.common] readBlock -> Received block: 0
+Block 0 timestamp: 2024-12-16T05:30:50Z
+Fetching block 1...
+2024-12-17 06:27:25.305 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2024-12-17 06:27:25.311 UTC 0002 INFO [cli.common] readBlock -> Received block: 1
+Block 1 timestamp: 2024-12-16T05:31:12Z
+Fetching block 2...
+2024-12-17 06:27:26.552 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2024-12-17 06:27:26.558 UTC 0002 INFO [cli.common] readBlock -> Received block: 2
+Block 2 timestamp: 2024-12-16T05:31:13Z
+Fetching block 3...
+2024-12-17 06:27:27.795 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2024-12-17 06:27:27.800 UTC 0002 INFO [cli.common] readBlock -> Received block: 3
+Block 3 timestamp: 2024-12-16T05:43:21.042710168Z
+Fetching block 4...
+2024-12-17 06:27:29.122 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2024-12-17 06:27:29.127 UTC 0002 INFO [cli.common] readBlock -> Received block: 4
+Block 4 timestamp: 2024-12-16T05:43:42.326156646Z
+Fetching block 5...
+2024-12-17 06:27:30.278 UTC 0001 INFO [channelCmd] InitCmdFactory -> Endorser and orderer connections initialized
+2024-12-17 06:27:30.283 UTC 0002 INFO [cli.common] readBlock -> Received block: 5
+Block 5 timestamp: 2024-12-16T05:44:11.223859619Z
+

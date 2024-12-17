@@ -19,7 +19,5 @@ while true; do
     # 次のブロックへ
     block_number=$((block_number + 1))
 
-    # 遅延 (85ms の間隔で取得)
-    sleep 0.085
 done
 
