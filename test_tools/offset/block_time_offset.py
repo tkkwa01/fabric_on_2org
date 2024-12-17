@@ -23,11 +23,18 @@ def extract_block_times(log_file, pattern, skip_first=False):
 
 # ディレクトリ入力とファイルパス取得
 def get_log_file_paths():
-    log_dir = input("ログファイルが格納されたディレクトリを入力してください: ").strip()
-    org1_log = os.path.join(log_dir, "org1_peer_log.txt")
-    org2_log = os.path.join(log_dir, "org2_peer_log.txt")
-    orderer_log = os.path.join(log_dir, "orderer_log.txt")
-    return org1_log, org2_log, orderer_log
+    while True:
+        log_dir = input("ログファイルが格納されたディレクトリを入力してください: ").strip()
+        if not os.path.isdir(log_dir):
+            print("エラー: 指定されたディレクトリが存在しません。再度入力してください。")
+            continue
+        org1_log = os.path.join(log_dir, "org1_peer_log.txt")
+        org2_log = os.path.join(log_dir, "org2_peer_log.txt")
+        orderer_log = os.path.join(log_dir, "orderer_log.txt")
+        if not (os.path.isfile(org1_log) and os.path.isfile(org2_log) and os.path.isfile(orderer_log)):
+            print("エラー: 必要なログファイルがディレクトリ内に存在しません。再度入力してください。")
+            continue
+        return org1_log, org2_log, orderer_log
 
 # ログパターン
 peer_pattern = r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3} UTC).*?Received block \[(\d+)\]"
