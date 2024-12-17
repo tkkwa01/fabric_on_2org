@@ -1,0 +1,20 @@
+2024-12-16 05:31:13.200 UTC 0048 INFO [gossip.privdata] StoreBlock -> Received block [1] from buffer channel=mychannel
+2024-12-16 05:31:15.389 UTC 0052 INFO [gossip.privdata] StoreBlock -> Received block [2] from buffer channel=mychannel
+2024-12-16 05:43:24.091 UTC 0077 INFO [gossip.privdata] StoreBlock -> Received block [3] from buffer channel=mychannel
+2024-12-16 05:43:45.390 UTC 0081 INFO [gossip.privdata] StoreBlock -> Received block [4] from buffer channel=mychannel
+2024-12-16 05:44:14.862 UTC 008b INFO [gossip.privdata] StoreBlock -> Received block [5] from buffer channel=mychannel
+2024-12-16 05:44:39.409 UTC 0090 INFO [gossip.privdata] StoreBlock -> Received block [6] from buffer channel=mychannel
+2024-12-16 05:44:58.160 UTC 009a INFO [gossip.privdata] StoreBlock -> Received block [7] from buffer channel=mychannel
+2024-12-16 05:45:21.332 UTC 00a6 INFO [gossip.privdata] StoreBlock -> Received block [8] from buffer channel=mychannel
+2024-12-16 05:45:29.054 UTC 00ab INFO [gossip.privdata] StoreBlock -> Received block [9] from buffer channel=mychannel
+2024-12-16 05:45:38.363 UTC 00b0 INFO [gossip.privdata] StoreBlock -> Received block [10] from buffer channel=mychannel
+2024-12-16 05:51:57.687 UTC 00d8 INFO [gossip.privdata] StoreBlock -> Received block [11] from buffer channel=mychannel
+2024-12-16 05:51:59.940 UTC 00f7 INFO [gossip.privdata] StoreBlock -> Received block [12] from buffer channel=mychannel
+2024-12-16 05:52:02.625 UTC 0114 INFO [gossip.privdata] StoreBlock -> Received block [13] from buffer channel=mychannel
+2024-12-16 05:52:04.386 UTC 012d INFO [gossip.privdata] StoreBlock -> Received block [14] from buffer channel=mychannel
+2024-12-16 05:52:06.433 UTC 0148 INFO [gossip.privdata] StoreBlock -> Received block [15] from buffer channel=mychannel
+2024-12-16 05:52:08.752 UTC 0161 INFO [gossip.privdata] StoreBlock -> Received block [16] from buffer channel=mychannel
+2024-12-16 05:52:11.101 UTC 0176 INFO [gossip.privdata] StoreBlock -> Received block [17] from buffer channel=mychannel
+2024-12-16 05:52:13.115 UTC 0189 INFO [gossip.privdata] StoreBlock -> Received block [18] from buffer channel=mychannel
+2024-12-16 05:52:15.131 UTC 0194 INFO [gossip.privdata] StoreBlock -> Received block [19] from buffer channel=mychannel
+
