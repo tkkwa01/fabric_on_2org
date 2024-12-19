@@ -72,6 +72,6 @@ if __name__ == "__main__":
         total_diff = sum(offset_diffs)
         avg_diff = total_diff / len(offset_diffs)
         print("-" * 100)
-        print(f"{'Total':12} | {'-':19} | {'-':19} | {'-':19} | {'-':13} | {'-':13} | {total_diff:+.3f}")
-        print(f"{'Average':12} | {'-':19} | {'-':19} | {'-':19} | {'-':13} | {'-':13} | {avg_diff:+.3f}")
+        print(f"{'Total':12} | {'-':19} | {'-':19} | {'-':19} | {'-':13} | {'-':13} | {total_diff:+.5f}")
+        print(f"{'Average':12} | {'-':19} | {'-':19} | {'-':19} | {'-':13} | {'-':13} | {avg_diff:+.5f}")
 
