@@ -6,14 +6,10 @@ from datetime import datetime
 datetime_format = "%Y-%m-%d %H:%M:%S.%f UTC"
 
 # ブロックの受信時間を取得する関数
-def extract_block_times(log_file, pattern, skip_first=False):
+def extract_block_times(log_file, pattern):
     block_times = {}
     with open(log_file, 'r') as file:
-        first_line_skipped = False
         for line in file:
-            if skip_first and not first_line_skipped:
-                first_line_skipped = True
-                continue
             match = re.search(pattern, line)
             if match:
                 timestamp = datetime.strptime(match.group(1), datetime_format)
@@ -73,7 +69,7 @@ if __name__ == "__main__":
     # データを取得
     org1_times = extract_block_times(org1_log, peer_pattern)
     org2_times = extract_block_times(org2_log, peer_pattern)
-    orderer_times = extract_block_times(orderer_log, orderer_pattern, skip_first=True)
+    orderer_times = extract_block_times(orderer_log, orderer_pattern)
 
     # 結果を格納するリスト
     offset_diffs = []
