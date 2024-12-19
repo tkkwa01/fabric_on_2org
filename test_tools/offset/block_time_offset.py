@@ -21,7 +21,7 @@ def extract_block_times(log_file, pattern, skip_first=False):
                 block_times[block_number] = timestamp
     return block_times
 
-# ディレクトリ入力とファイルパス取得
+# 入力ディレクトリの確認とファイルパス取得
 def get_log_file_paths():
     while True:
         log_dir = input("ログファイルが格納されたディレクトリを入力してください: ").strip()
@@ -36,14 +36,39 @@ def get_log_file_paths():
             continue
         return org1_log, org2_log, orderer_log
 
+# 出力ディレクトリの確認
+def get_output_directory():
+    while True:
+        output_dir = input("結果を保存する出力先ディレクトリを入力してください: ").strip()
+        if not os.path.isdir(output_dir):
+            print("エラー: 指定されたディレクトリが存在しません。再度入力してください。")
+            continue
+        return output_dir
+
+# 出力ファイル名を決定する関数
+def get_output_filename(output_dir, base_name="offset.txt"):
+    # 指定したディレクトリ内で "offset.txt", "offset2.txt", "offset3.txt", ... を探す
+    base_path = os.path.join(output_dir, base_name)
+    if not os.path.exists(base_path):
+        return base_path
+    counter = 2
+    while True:
+        new_name = os.path.join(output_dir, f"offset{counter}.txt")
+        if not os.path.exists(new_name):
+            return new_name
+        counter += 1
+
 # ログパターン
 peer_pattern = r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3} UTC).*?Received block \[(\d+)\]"
 orderer_pattern = r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3} UTC).*?Writing block \[(\d+)\]"
 
 # メイン処理
 if __name__ == "__main__":
-    # ファイルパスを取得
+    # 入力ログディレクトリを取得
     org1_log, org2_log, orderer_log = get_log_file_paths()
+
+    # 出力先ディレクトリを取得
+    output_dir = get_output_directory()
 
     # データを取得
     org1_times = extract_block_times(org1_log, peer_pattern)
@@ -67,8 +92,8 @@ if __name__ == "__main__":
         diff_sign = "+" if offset_diff >= 0 else "-"
         print(f"{block:12} | {orderer_time} | {org1_time} | {org2_time} | {org1_offset:.3f}         | {org2_offset:.3f}         | {diff_sign}{abs(offset_diff):.3f}")
 
-    # Offset Diff (s)列のみをファイルに出力
-    output_file = "offset.txt"
+    # Offset Diff (s)列のみを出力ディレクトリにファイル出力
+    output_file = get_output_filename(output_dir)
     with open(output_file, "w") as f:
         for diff in offset_diffs:
             diff_sign = "+" if diff >= 0 else "-"
@@ -80,4 +105,5 @@ if __name__ == "__main__":
         f.write(f"Average:{avg_diff:+.5f}\n")
 
     print(f"\nOffset Diff (s)の結果が '{output_file}' に出力されました。")
+
 
