@@ -52,7 +52,10 @@ if __name__ == "__main__":
 
     # 時間差を計算して出力
     print("Block Number | Orderer Time         | Org1 Time            | Org2 Time            | Org1 Offset (s) | Org2 Offset (s) | Offset Diff (s)")
-    print("-" * 140)
+    print("-" * 100)
+
+    offset_diffs = []  # Offset Diff の値を格納するリスト
+
     for block in sorted(set(orderer_times.keys()) & set(org1_times.keys()) & set(org2_times.keys())):
         orderer_time = orderer_times[block]
         org1_time = org1_times[block]
@@ -60,6 +63,15 @@ if __name__ == "__main__":
         org1_offset = (org1_time - orderer_time).total_seconds()
         org2_offset = (org2_time - orderer_time).total_seconds()
         offset_diff = org2_offset - org1_offset
+        offset_diffs.append(offset_diff)  # リストに追加
         diff_sign = "+" if offset_diff >= 0 else "-"
         print(f"{block:12} | {orderer_time} | {org1_time} | {org2_time} | {org1_offset:.3f}         | {org2_offset:.3f}         | {diff_sign}{abs(offset_diff):.3f}")
+
+    # 合計と平均を計算
+    if offset_diffs:
+        total_diff = sum(offset_diffs)
+        avg_diff = total_diff / len(offset_diffs)
+        print("-" * 100)
+        print(f"{'Total':12} | {'-':19} | {'-':19} | {'-':19} | {'-':13} | {'-':13} | {total_diff:+.3f}")
+        print(f"{'Average':12} | {'-':19} | {'-':19} | {'-':19} | {'-':13} | {'-':13} | {avg_diff:+.3f}")
 
