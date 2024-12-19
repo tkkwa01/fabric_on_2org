@@ -106,4 +106,3 @@ if __name__ == "__main__":
 
     print(f"\nOffset Diff (s)の結果が '{output_file}' に出力されました。")
 
-
