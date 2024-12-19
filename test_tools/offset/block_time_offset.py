@@ -80,7 +80,7 @@ if __name__ == "__main__":
 
     # 時間差を計算して出力
     print("Block Number | Orderer Time         | Org1 Time            | Org2 Time            | Org1 Offset (s) | Org2 Offset (s) | Offset Diff (s)")
-    print("-" * 100)
+    print("-" * 140)
     for block in sorted(set(orderer_times.keys()) & set(org1_times.keys()) & set(org2_times.keys())):
         orderer_time = orderer_times[block]
         org1_time = org1_times[block]
