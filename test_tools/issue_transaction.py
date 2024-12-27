@@ -1,5 +1,7 @@
 import subprocess
 import re
+import random
+import string
 from datetime import datetime
 import time
 import threading
@@ -21,7 +23,7 @@ organizations = {
 }
 
 channel_name = "mychannel"
-chaincode_name = "basic2"
+chaincode_name = "basic1"
 
 def run_command(command):
     try:
@@ -31,13 +33,24 @@ def run_command(command):
         print(f"Command execution error: {e.output}")
         return None
 
+def generate_random_string(length):
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+
 def send_transaction(tx_id):
     """単一のトランザクションを送信する"""
     asset_id = f"test{tx_id}"
+    color = f"color{tx_id}"
+    size = tx_id
+    owner = generate_random_string(4096)  # 長いランダムな所有者名
+    appraised_value = tx_id * 100
+
+    # Dockerコマンドを構築
     command = (
         "docker exec cli peer chaincode invoke -o orderer.example.com:7050 "
         f"-C {channel_name} -n {chaincode_name} "
-        f'-c \'{{"function":"CreateAsset","Args":["{asset_id}", "color{tx_id}", "{tx_id}", "owner{tx_id}", "{tx_id}00"]}}\' '
+        f'--peerAddresses {organizations["org1"]["peer_address"]} --tlsRootCertFiles {organizations["org1"]["tls_cert_path"]} '
+        f'--peerAddresses {organizations["org2"]["peer_address"]} --tlsRootCertFiles {organizations["org2"]["tls_cert_path"]} '
+        f'-c \'{{"Args":["CreateAsset", "{asset_id}", "{color}", "{size}", "{owner}", "{appraised_value}"]}}\' '
         "--tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
     )
     print(f"Submitting transaction {tx_id}...")
@@ -48,13 +61,16 @@ def send_transaction(tx_id):
         print(f"Failed to submit transaction {tx_id}.")
 
 def main():
-    transaction_count = 30  # 発行するトランザクションの総数
-    tx_id = 0
+    transaction_count = 100  # 発行するトランザクションの総数
+    start_tx_id = 900
+    end_tx_id = start_tx_id + transaction_count
 
-    while tx_id < transaction_count:
+    tx_id = start_tx_id
+
+    while tx_id < end_tx_id:
         start_time = time.time()
-        tx_id += 1
         send_transaction(tx_id)
+        tx_id += 1
         elapsed_time = time.time() - start_time
         sleep_time = max(0, 0.085 - elapsed_time)
         time.sleep(sleep_time)
@@ -63,5 +79,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
